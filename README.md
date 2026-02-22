@@ -23,6 +23,13 @@ A lightweight desktop tool for visualizing and analyzing CFD solver convergence 
 | Ansys Fluent | Steady / Transient | `.out` |
 | SU2 | Steady | `.csv` |
 
+## How to Use
+
+1. Set up user-defined monitor points in your CFD solver and run the simulation.
+2. Open the exported monitor history files (CSV or OUT) in CFD Convergence Watch.
+3. Select the matching solver preset from **Settings > CFD Solver**.
+4. Check the variables you want to inspect and quickly evaluate convergence using the SMA overlay and convergence indicators.
+
 ## Download
 
 Download the latest release from the [Releases](../../releases) page.
@@ -36,6 +43,14 @@ Download the latest release from the [Releases](../../releases) page.
 
 - Windows 10 or later
 - DirectX 11 compatible GPU
+
+## Acknowledgments
+
+Built with [Dear ImGui](https://github.com/ocornut/imgui) and [ImPlot](https://github.com/epezent/implot) (MIT License).
+
+## Trademarks
+
+ANSYS, CFX, and Fluent are registered trademarks of ANSYS, Inc. Flow360 is a trademark of FlexCompute, Inc. SU2 was developed at Stanford University. This software is not affiliated with, endorsed by, or sponsored by any of these organizations.
 
 ## License
 

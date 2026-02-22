@@ -1,6 +1,6 @@
 # CFD Convergence Watch 사용자 매뉴얼
 
-**버전**: v0.3.0
+**버전**: v0.3.2
 
 ---
 
@@ -135,6 +135,25 @@ physical_step, pseudo_step, CL, CD, ...
 
 Solver를 변경하면 이미 로드된 모든 파일이 새 solver 설정으로 자동 재로드됩니다.
 
+### 범례 위치
+
+**Settings > Legend Position** 메뉴에서 차트 범례의 위치를 변경할 수 있습니다.
+
+| 옵션 | 설명 |
+|------|------|
+| Inside (Top-Left) | 차트 안쪽 좌측 상단 (기본값) |
+| Outside (Right) | 차트 바깥 오른쪽 |
+| Outside (Top) | 차트 바깥 상단 |
+| Outside (Bottom) | 차트 바깥 하단 |
+
+### CFX Install Path
+
+**Settings > CFX Install Path** 메뉴를 선택하면 CFX bin 폴더 경로를 설정하는 모달이 표시됩니다.
+
+- 텍스트 입력란에 현재 경로가 표시되며, 직접 수정하거나 **Browse** 버튼으로 폴더를 선택할 수 있습니다.
+- 경로는 `cfx5mondata.exe`가 있는 폴더를 지정해야 합니다 (예: `C:\Program Files\ANSYS Inc\v242\CFX\bin`).
+- Tools > Extract from CFX 기능 사용 시 필요합니다.
+
 ### X축 경고
 
 데이터 로드 시 X축 값이 일정 간격(sequential)이 아닌 경우 경고 모달이 표시됩니다. 이는 데이터에 맞지 않는 solver를 선택했을 가능성을 나타냅니다. **Settings > CFD Solver**에서 올바른 solver를 선택해 주세요.
@@ -217,7 +236,24 @@ Copy 버튼 옆의 체크박스로 복사할 컬럼을 선택할 수 있습니�
 
 ---
 
-## 7. 테마
+## 7. Tools
+
+### Extract from CFX
+
+**Tools > Extract from CFX** 메뉴를 선택하면 CFX 결과 파일(`.res`)에서 USER POINT 모니터링 데이터를 CSV로 추출합니다.
+
+1. Settings에서 CFX Install Path가 설정되어 있어야 합니다.
+2. `.res` 파일을 선택합니다.
+3. 추출이 백그라운드에서 실행되며, 진행 중에는 스피너가 표시됩니다.
+4. 완료 시 결과가 팝업으로 표시됩니다.
+   - 성공: `{파일명}_userpoints.csv`가 `.res` 파일과 같은 폴더에 생성되고, 자동으로 앱에 로드됩니다.
+   - 실패: 에러 메시지가 표시됩니다.
+
+내부적으로 ANSYS의 `cfx5mondata.exe`를 호출하여 추출합니다.
+
+---
+
+## 8. 테마
 
 **View** 메뉴에서 UI 테마를 변경할 수 있습니다.
 
@@ -227,7 +263,7 @@ Copy 버튼 옆의 체크박스로 복사할 컬럼을 선택할 수 있습니�
 
 ---
 
-## 8. 설정 저장
+## 9. 설정 저장
 
 프로그램 종료 시 아래 설정이 자동 저장되며, 다음 실행 시 복원됩니다.
 
@@ -235,9 +271,15 @@ Copy 버튼 옆의 체크박스로 복사할 컬럼을 선택할 수 있습니�
 - 테마
 - 마지막 열었던 폴더 경로
 - SMA 윈도우 크기 및 활성화 상태
+- 범례 위치
+- CFX Install Path
 
 설정 파일: 실행 파일과 같은 폴더의 `cfdconvwatch.ini`
 
+
+## Trademarks
+
+ANSYS, CFX, Fluent는 ANSYS, Inc.의 등록 상표입니다. Flow360은 FlexCompute, Inc.의 상표입니다. SU2는 Stanford University에서 개발되었습니다. 본 소프트웨어는 이들 회사와 아무런 관련이 없으며, 보증 또는 승인을 받지 않았습니다.
 
 ## License
 Freeware - free for personal and commercial use. No warranty.

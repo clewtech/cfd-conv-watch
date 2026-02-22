@@ -1,6 +1,6 @@
 # CFD Convergence Watch User Manual
 
-**Version**: v0.3.0
+**Version**: v0.3.2
 
 ---
 
@@ -135,6 +135,25 @@ Select the appropriate solver from **Settings > CFD Solver**.
 
 Changing the solver automatically reloads all loaded files with the new solver settings.
 
+### Legend Position
+
+Change the chart legend position from **Settings > Legend Position**.
+
+| Option | Description |
+|--------|-------------|
+| Inside (Top-Left) | Inside the chart, top-left corner (default) |
+| Outside (Right) | Outside the chart, right side |
+| Outside (Top) | Outside the chart, top |
+| Outside (Bottom) | Outside the chart, bottom |
+
+### CFX Install Path
+
+Select **Settings > CFX Install Path** to open a modal for configuring the CFX bin folder path.
+
+- The current path is shown in an editable text field. You can type directly or use the **Browse** button to select a folder.
+- The path should point to the folder containing `cfx5mondata.exe` (e.g., `C:\Program Files\ANSYS Inc\v242\CFX\bin`).
+- Required for the Tools > Extract from CFX feature.
+
 ### X-Axis Warning
 
 If the X-axis values are not sequential (non-uniform step size) when data is loaded, a warning modal is displayed. This may indicate an incorrect solver selection for the data. Please verify the solver in **Settings > CFD Solver**.
@@ -217,7 +236,24 @@ Use the checkboxes next to the Copy button to select which columns to copy:
 
 ---
 
-## 7. Theme
+## 7. Tools
+
+### Extract from CFX
+
+Select **Tools > Extract from CFX** to extract USER POINT monitor data from a CFX result file (`.res`) to CSV.
+
+1. CFX Install Path must be configured in Settings first.
+2. Select a `.res` file.
+3. Extraction runs in the background with a spinner indicator.
+4. A result popup is shown on completion:
+   - Success: `{filename}_userpoints.csv` is created in the same folder as the `.res` file and automatically loaded into the app.
+   - Failure: An error message is displayed.
+
+Internally, this calls ANSYS `cfx5mondata.exe` to perform the extraction.
+
+---
+
+## 8. Theme
 
 Change the UI theme from the **View** menu.
 
@@ -227,7 +263,7 @@ Change the UI theme from the **View** menu.
 
 ---
 
-## 8. Settings Persistence
+## 9. Settings Persistence
 
 The following settings are automatically saved on exit and restored on next launch:
 
@@ -235,9 +271,15 @@ The following settings are automatically saved on exit and restored on next laun
 - Theme
 - Last opened folder path
 - SMA window sizes and enabled states
+- Legend position
+- CFX Install Path
 
 Settings file: `cfdconvwatch.ini` in the same folder as the executable.
 
+
+## Trademarks
+
+ANSYS, CFX, and Fluent are registered trademarks of ANSYS, Inc. Flow360 is a trademark of FlexCompute, Inc. SU2 was developed at Stanford University. This software is not affiliated with, endorsed by, or sponsored by any of these organizations.
 
 ## License
 Freeware - free for personal and commercial use. No warranty.
