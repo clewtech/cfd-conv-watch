@@ -1,6 +1,6 @@
 # CFD Convergence Watch 사용자 매뉴얼
 
-**버전**: v0.3.2
+**버전**: v0.4.3
 
 ---
 
@@ -69,7 +69,7 @@ physical_step, pseudo_step, CL, CD, ...
 
 ## 2. 화면 구성
 
-![CFD Convergence Watch 메인 화면](screenshot_v030.jpg)
+![CFD Convergence Watch 메인 화면](screenshot_v043.jpg)
 
 프로그램은 3개 패널과 상태바로 구성됩니다.
 
@@ -116,6 +116,13 @@ physical_step, pseudo_step, CL, CD, ...
 ### 파일 전체 삭제
 
 **File > Clear All** 메뉴를 선택하면 로드된 모든 파일을 제거합니다.
+
+### 자동 재로드 (Auto Reload)
+
+File Panel 상단의 **Auto Reload** 체크박스를 활성화하면 2초마다 로드된 파일의 수정 시각을 확인해 변경된 파일을 자동으로 다시 읽어옵니다.
+
+- solver가 실행 중일 때 수렴 추이를 실시간으로 확인하는 용도로 사용합니다.
+- Auto Reload 활성화 중에는 차트 X축이 데이터 끝까지 자동으로 따라가도록 갱신됩니다.
 
 ---
 
@@ -201,6 +208,12 @@ R-S1:0.05%  R-S2:0.10%  S1-S2:0.03% OK
 | ~ | S1-S2 < 1.0% | 노란색 |
 | X | S1-S2 >= 1.0% | 빨간색 |
 
+동일한 색상 기준이 **Variable Panel의 변수명**과 **File Panel의 파일명**에도 적용됩니다. 파일명 색상은 해당 파일이 가진 변수 중 가장 나쁜 수렴 상태를 기준으로 표시됩니다 (테마에 따라 어두운 톤/밝은 톤이 자동 선택됩니다).
+
+### 차트 이미지 저장
+
+SMA 컨트롤 옆의 **Save Image** 버튼을 클릭하면 차트 영역을 PNG 파일로 저장하는 대화상자가 열립니다. 차트 패널의 픽셀이 그대로 캡처됩니다.
+
 ### 차트 조작
 
 ImPlot 차트는 마우스로 조작할 수 있습니다.
@@ -219,8 +232,8 @@ ImPlot 차트는 마우스로 조작할 수 있습니다.
 | 컬럼 | 설명 |
 |------|------|
 | Variable | 변수명 |
-| Min | 최솟값 |
-| Max | 최댓값 |
+| StdDev | 표준편차 |
+| Mean | 평균값 |
 | Final | 마지막 값 |
 | SMA-1 (N) | SMA-1 최종값 (윈도우 크기 N) |
 | SMA-2 (N) | SMA-2 최종값 (윈도우 크기 N) |
@@ -232,7 +245,7 @@ ImPlot 차트는 마우스로 조작할 수 있습니다.
 
 Copy 버튼 옆의 체크박스로 복사할 컬럼을 선택할 수 있습니다:
 
-- **Min** / **Max** / **Final** / **S1** / **S2** / **Diff**
+- **SD** / **Mean** / **Final** / **S1** / **S2** / **Diff**
 
 ---
 
@@ -274,7 +287,12 @@ Copy 버튼 옆의 체크박스로 복사할 컬럼을 선택할 수 있습니�
 - 범례 위치
 - CFX Install Path
 
-설정 파일: 실행 파일과 같은 폴더의 `cfdconvwatch.ini`
+설정 파일 위치:
+
+- **Windows**: `%APPDATA%\CfdConvWatch\cfdconvwatch.ini`
+- **Linux**: `$XDG_CONFIG_HOME/CfdConvWatch/cfdconvwatch.ini` (없으면 `~/.config/CfdConvWatch/cfdconvwatch.ini`)
+
+OS 표준 사용자 설정 위치를 사용하므로 권한 문제 없이 저장되며, 사용자별로 분리됩니다.
 
 
 ## Trademarks

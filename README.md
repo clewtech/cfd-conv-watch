@@ -2,7 +2,7 @@
 
 A lightweight desktop tool for visualizing and analyzing CFD solver convergence history.
 
-![CFD Convergence Watch](docs/screenshot_v030.jpg)
+![CFD Convergence Watch](docs/screenshot_v043.jpg)
 
 ## Features
 
@@ -10,8 +10,13 @@ A lightweight desktop tool for visualizing and analyzing CFD solver convergence 
 - Interactive chart with pan, zoom, and auto-fit
 - Dual Simple Moving Average (SMA) for convergence evaluation
 - Convergence overlay with color-coded indicators (OK / ~ / X)
-- Statistics table with clipboard copy (Excel-compatible)
+  also reflected in the Variable Panel and File Panel name colors
+- Statistics table (StdDev, Mean, Final, SMA-1/2, S1-S2%) with
+  clipboard copy (Excel-compatible)
+- Auto Reload — polls loaded files every 2s for live monitoring
+- Save Image — export the chart area as PNG
 - Dark, Light, and Classic themes
+- Cross-platform: Windows and Linux (unified GLFW + OpenGL3 backend)
 
 ## Supported Solvers
 
@@ -41,8 +46,8 @@ Download the latest release from the [Releases](../../releases) page.
 
 ## System Requirements
 
-- Windows 10 or later
-- DirectX 11 compatible GPU
+- Windows 10 or later, or Linux (Ubuntu 22.04+ recommended)
+- OpenGL 3.0 compatible GPU
 
 ## Acknowledgments
 

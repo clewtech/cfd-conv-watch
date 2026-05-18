@@ -1,6 +1,6 @@
 # CFD Convergence Watch User Manual
 
-**Version**: v0.3.2
+**Version**: v0.4.3
 
 ---
 
@@ -69,7 +69,7 @@ physical_step, pseudo_step, CL, CD, ...
 
 ## 2. Layout
 
-![CFD Convergence Watch Main Screen](screenshot_v030.jpg)
+![CFD Convergence Watch Main Screen](screenshot_v043.jpg)
 
 The application consists of three panels and a status bar.
 
@@ -116,6 +116,13 @@ Select **File > Open Files** or click the **Add Files** button in the File Panel
 ### Clear All
 
 Select **File > Clear All** to remove all loaded files.
+
+### Auto Reload
+
+Enable the **Auto Reload** checkbox at the top of the File Panel to poll loaded files every 2 seconds and reload any that have been modified.
+
+- Useful for monitoring convergence in real time while the solver is still running.
+- While Auto Reload is enabled, the chart's X-axis automatically follows the data to the latest point.
 
 ---
 
@@ -201,6 +208,12 @@ Convergence symbols:
 | ~ | S1-S2 < 1.0% | Yellow |
 | X | S1-S2 >= 1.0% | Red |
 
+The same color thresholds are applied to **variable names in the Variable Panel** and **file names in the File Panel**. A file's name color reflects the worst convergence state among its variables (dark/light tones are chosen automatically based on the active theme).
+
+### Save Chart Image
+
+Click the **Save Image** button next to the SMA controls to open a save dialog and write the chart area to a PNG file. The chart panel is captured at its current pixel size.
+
 ### Chart Controls
 
 The ImPlot chart supports mouse interaction:
@@ -219,8 +232,8 @@ Below the chart, statistics for selected variables are displayed in a table.
 | Column | Description |
 |--------|-------------|
 | Variable | Variable name |
-| Min | Minimum value |
-| Max | Maximum value |
+| StdDev | Standard deviation |
+| Mean | Mean value |
 | Final | Last value |
 | SMA-1 (N) | SMA-1 final value (window size N) |
 | SMA-2 (N) | SMA-2 final value (window size N) |
@@ -232,7 +245,7 @@ Click the **Copy** button to copy statistics data in tab-separated format to the
 
 Use the checkboxes next to the Copy button to select which columns to copy:
 
-- **Min** / **Max** / **Final** / **S1** / **S2** / **Diff**
+- **SD** / **Mean** / **Final** / **S1** / **S2** / **Diff**
 
 ---
 
@@ -274,7 +287,12 @@ The following settings are automatically saved on exit and restored on next laun
 - Legend position
 - CFX Install Path
 
-Settings file: `cfdconvwatch.ini` in the same folder as the executable.
+Settings file location:
+
+- **Windows**: `%APPDATA%\CfdConvWatch\cfdconvwatch.ini`
+- **Linux**: `$XDG_CONFIG_HOME/CfdConvWatch/cfdconvwatch.ini` (falls back to `~/.config/CfdConvWatch/cfdconvwatch.ini`)
+
+The OS-standard per-user config location is used, so writes don't require elevated privileges and settings remain isolated per user account.
 
 
 ## Trademarks
